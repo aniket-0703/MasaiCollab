@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <style>
+        body{
+            background-color:antiquewhite;
+            background-image: url(https://cdn.hipwallpaper.com/i/92/57/MYw3o4.png);
+        }
+        input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid black;
+  box-sizing: border-box;
+
+}
+        #container{
+            display: flex;
+            
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border-radius: 2px solid black;
+        
+           
+        }
+        #login{
+            margin-top: 20px;
+            margin-left: 60px;
+            background-color: pink;
+            border-radius: 30px;
+            
+        }
+        h1{
+            text-align: center;
+        }
+        #link{
+            text-decoration: underline;
+            color: green;
+            display: flex;
+        }
+        #link:hover{
+            cursor: pointer;
+         
+        }
+        form{
+            border: 2px solid black;
+          width: 25%;
+         padding: 20px;
+         background-color: #04AA6D;
+        }
+        #login{
+          
+    background-color: #252b29;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+     border: none;
+    cursor: pointer;
+    width: 100%;
+     margin-top: 50px;
+    }
+        
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <div id="container">
+        <form>
+            <p>Email</p>
+            <input type="text" id="email" type="email" placeholder="Enter your email" required>
+            <p>Password</p>
+            <input type="password" id="password" placeholder="Password" required>
+            <br>
+            <input id="login" type="submit" value="Login">
+
+            <br>
+            <br>
+            <br>
+            <p><b>Create new account </b><a id="link"><b>Signup</b></a></p>
+        </form>
+    </div>
+</body>
+
+<script>
+    document.querySelector("form").addEventListener("submit",loginFn);
+    document.querySelector("#link").addEventListener("click",signupfn);
+
+    function signupfn(){
+        window.location.href="signup.html";
+    }
+
+    var registeredUsers = JSON.parse(localStorage.getItem("userdata"));
+    function loginFn() {
+        event.preventDefault();
+        var enteredEmail = document.querySelector("#email").value;
+        var enteredPassword = document.querySelector("#password").value;
+        registeredUsers.forEach(function(userData){
+            if(userData.email == enteredEmail && userData.password == enteredPassword) {
+                alert("LOGIN SUCCESS");
+            
+            } 
+            else {
+               alert("Incorrect Details");
+            }
+            
+        });
+    }
+
+    
+</script>
+</html>
